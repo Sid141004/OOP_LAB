@@ -66,7 +66,7 @@ public class labcompany {
         int n = 5;
         hardware ob1 = new hardware("strong ","google", a);
         software ob2 = new software("free", "ios", a);
-        ob1.disp();;
+        ob1.disp();
         System.out.println(ob1.tot_sales(n));
         ob2.disp();
         System.out.println(ob2.tot_sales(n));
