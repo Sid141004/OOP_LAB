@@ -1,0 +1,54 @@
+class Solution {
+    Trie root;
+    void insert(String word){
+        Trie curr=root;
+        for(char c : word.toCharArray()){
+            int i = c- 'a';
+            if(curr.children[i]==null){
+                curr.children[i]=new Trie();
+            }
+            curr=curr.children[i];
+        }
+        curr.isEnd = true;
+    }
+    boolean search(String word){
+        Trie curr = root;
+        for(char c : word.toCharArray()){
+            int i = c - 'a';
+            if(curr.children[i]==null){
+                return false;
+            }
+            curr = curr.children[i];
+        }
+        if(curr.isEnd==false) return false;
+        return true;
+    }
+    boolean startsWith(String word){
+        Trie curr = root;
+        for(char c : word.toCharArray()){
+            int i = c - 'a';
+            if(curr.children[i]==null){
+                return false;
+            }
+            curr=curr.children[i];
+        }
+        return true;
+    }
+    
+    public String replaceWords(List<String> dictionary, String sentence) {
+        root=new Trie();
+        for(String s : dictionary){
+            insert(s);
+        }
+        String[] words = sentence.split(" ");
+        String res="";
+    }
+}
+class Trie{
+    Trie[] children;
+    boolean isEnd;
+    Trie(){
+        children = new Trie[26];
+        isEnd=false;
+    }
+}
